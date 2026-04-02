@@ -1,47 +1,22 @@
-# DroneHub Frontend + XAMPP(MySQL) Integration Notes
+# DroneHub Diploma Project (HTML/CSS/JS + Java + MySQL/XAMPP)
 
-Энэ frontend нь хоёр горимтой:
+Энэ repository-д дипломын ажлын түвшний системийн материалууд орсон:
 
-1. **LIVE mode** – XAMPP дээрх PHP API ажиллаж байвал (`http://localhost/dronehub-api`) өгөгдлийг API-аас авна.
-2. **DEMO mode** – API байхгүй үед локал demo өгөгдлөөр ажиллана.
+## Орсон файлууд
 
-## XAMPP setup
+- `docs/diploma_system_design_mn.md` — Дипломын тайлангийн үндсэн бүлгүүд (зорилго, шаардлага, use-case, diagram тайлбар, аюулгүй байдал, тайлан, сайжруулалт).
+- `sql/dronehub_schema.sql` — MySQL schema (roles, users, services, bookings, booking_files, service_reviews, audit_logs).
+- `backend/src/main/java/com/dronehub/...` — Java backend architecture skeleton (controller/service/dao/model/security/util).
+- `index.html`, `styles.css`, `app.js`, `api.js` — Frontend dashboard prototype.
 
-1. `Apache` болон `MySQL`-ээ XAMPP дээр асаана.
-2. API фолдероо `htdocs/dronehub-api` дотор байрлуулна.
-3. Frontend дотроос дуудагдах endpoint-ууд:
-   - `GET /health.php`
-   - `GET /bootstrap.php`
-   - `POST /auth/login.php`
-   - `POST /auth/register.php`
-   - `POST /bookings/create.php`
-   - `POST /bookings/update.php?id=...`
-   - `POST /services/create.php`
-   - `POST /services/update.php?id=...`
-   - `DELETE /services/delete.php?id=...`
+## XAMPP Setup
 
-## MySQL suggested tables
+1. XAMPP дээр `Apache` + `MySQL` асаана.
+2. `sql/dronehub_schema.sql` файлыг импортлоно.
+3. Java backend-ийг MySQL руу `jdbc:mysql://localhost:3306/dronehub_db` холбож ажиллуулна.
+4. Хэрвээ PHP bridge ашиглах бол `http://localhost/dronehub-api` endpoint-ууд бэлдэнэ.
 
-- `users(id, name, email, role, status, created_at)`
-- `services(id, title, price_value, location, description, image, approval_status, provider, created_at)`
-- `bookings(id, customer, operator, service, date, time, location, notes, status, file_ready, created_at)`
+## Анхаарах зүйл
 
-## API response shape
-
-`GET /bootstrap.php`:
-
-```json
-{
-  "services": [],
-  "bookings": [],
-  "users": []
-}
-```
-
-## Base URL override
-
-Хэрвээ өөр URL ашиглах бол `index.html`-д `api.js`-ийн өмнө:
-
-```html
-<script>window.DRONEHUB_API_BASE = "http://localhost/my-custom-api";</script>
-```
+- Энэ commit дээрх Java код нь дипломын архитектурын **skeleton** тул endpoint, transaction, exception handling-ийг төслийн хэрэгжилтэд бүрэн гүйцээж нэмэх шаардлагатай.
+- Password hashing-д demo зорилгоор SHA-256 ашигласан. Production орчинд BCrypt/Argon2 хэрэглэхийг зөвлөж байна.
