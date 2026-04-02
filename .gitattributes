@@ -1,0 +1,3 @@
+# Reduce merge conflicts on frequently edited docs/sql
+README.md merge=union
+sql/dronehub_schema.sql merge=union
