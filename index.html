@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="mn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DroneHub | Дроны зураг авалтын marketplace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="toast" class="toast hidden"></div>
+
+    <section id="landingPage" class="landing-page">
+      <header class="landing-header container">
+        <div class="brand-line">
+          <i class="fa-solid fa-helicopter"></i>
+          <span>DroneHub</span>
+        </div>
+        <nav>
+          <a href="#features">Онцлог</a>
+          <a href="#how">Хэрхэн ажиллах вэ</a>
+          <a href="#roles">Role</a>
+          <button id="openAuthBtn" class="primary-btn">Эхлэх</button>
+        </nav>
+      </header>
+
+      <div class="hero container">
+        <div>
+          <p class="eyebrow">Production-grade Marketplace UI</p>
+          <h1>Дроны зураг авалтын үйлчилгээ захиалах, удирдах нэгдсэн платформ</h1>
+          <p>
+            Хэрэглэгч, оператор, контент хянагч, админы урсгалыг нэг интерфэйстэйгээр бүрэн
+            дэмжсэн орчин үеийн веб систем.
+          </p>
+          <div class="hero-actions">
+            <button id="heroLoginBtn" class="primary-btn">Нэвтрэх</button>
+            <button id="heroDemoBtn" class="ghost-btn">Demo харах</button>
+          </div>
+        </div>
+        <div class="hero-card glass fade-in-up">
+          <h3>Realtime үзүүлэлт</h3>
+          <div class="stats-grid compact" id="landingStats"></div>
+        </div>
+      </div>
+
+      <section id="features" class="container section-block">
+        <h2>Үндсэн боломжууд</h2>
+        <div class="feature-grid">
+          <article class="card feature-card">
+            <i class="fa-solid fa-user-check"></i>
+            <h4>Role-based access</h4>
+            <p>Төрөл бүрийн хэрэглэгч бүр өөрийн тусгай dashboard-той.</p>
+          </article>
+          <article class="card feature-card">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <h4>Байршилд суурилсан захиалга</h4>
+            <p>Огноо, цаг, байршилтайгаар хурдан захиалга үүсгэнэ.</p>
+          </article>
+          <article class="card feature-card">
+            <i class="fa-solid fa-shield"></i>
+            <h4>Контент баталгаажуулалт</h4>
+            <p>Manager роль заруудыг батлах/татгалзах бүрэн урсгалтай.</p>
+          </article>
+        </div>
+      </section>
+    </section>
+
+    <div class="auth-shell hidden" id="authShell">
+      <section class="auth-panel glass">
+        <h2>Нэвтрэх / Бүртгүүлэх</h2>
+        <p class="auth-subtitle">DroneHub системд нэвтэрч role-д суурилсан удирдлагыг ашиглана уу.</p>
+
+        <div class="auth-tabs">
+          <button class="tab-btn active" data-tab="login">Нэвтрэх</button>
+          <button class="tab-btn" data-tab="register">Бүртгүүлэх</button>
+        </div>
+
+        <form id="loginForm" class="auth-form active">
+          <label>
+            И-мэйл
+            <input id="loginEmail" type="email" placeholder="name@example.com" required />
+          </label>
+          <label>
+            Нууц үг
+            <input type="password" placeholder="••••••••" required />
+          </label>
+          <label>
+            Role
+            <select id="roleSelector" required>
+              <option value="customer">Customer</option>
+              <option value="operator">Service Provider</option>
+              <option value="manager">Content Manager</option>
+              <option value="admin">Admin</option>
+            </select>
+          </label>
+          <div class="auth-actions">
+            <button class="primary-btn" type="submit">Нэвтрэх</button>
+            <button id="backToLandingBtn" type="button" class="ghost-btn">Буцах</button>
+          </div>
+        </form>
+
+        <form id="registerForm" class="auth-form">
+          <label>
+            Нэр
+            <input id="registerName" type="text" placeholder="Таны нэр" required />
+          </label>
+          <label>
+            И-мэйл
+            <input type="email" placeholder="name@example.com" required />
+          </label>
+          <label>
+            Нууц үг
+            <input type="password" placeholder="Хамгийн багадаа 8 тэмдэгт" required />
+          </label>
+          <button class="primary-btn" type="submit">Бүртгэл үүсгэх</button>
+        </form>
+      </section>
+    </div>
+
+    <main class="app-shell hidden" id="appShell">
+      <aside class="sidebar" id="sidebar">
+        <div class="brand">
+          <i class="fa-solid fa-helicopter"></i>
+          <div>
+            <h2>DroneHub</h2>
+            <span id="roleBadge">Customer</span>
+          </div>
+        </div>
+
+        <nav id="menuList" class="menu-list"></nav>
+
+        <div class="sidebar-footer">
+          <button id="logoutBtn" class="ghost-btn">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            Гарах
+          </button>
+        </div>
+      </aside>
+
+      <section class="content-wrap">
+        <header class="topbar glass">
+          <button id="mobileMenuBtn" class="icon-btn" aria-label="menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div>
+            <h3 id="pageTitle">Dashboard</h3>
+            <p id="pageSubtitle">Өгөгдөл шинэчлэгдсэн</p>
+          </div>
+          <div class="profile-chip">
+            <i class="fa-solid fa-circle-user"></i>
+            <span id="profileName">B. User</span>
+            <span id="backendBadge" class="badge pending">Offline demo</span>
+          </div>
+        </header>
+
+        <section id="view" class="view"></section>
+      </section>
+    </main>
+
+    <template id="serviceCardTemplate">
+      <article class="card service-card fade-in-up">
+        <img src="" alt="service" />
+        <div class="card-body">
+          <div class="card-topline">
+            <h4 class="service-title"></h4>
+            <span class="price"></span>
+          </div>
+          <p class="service-location"></p>
+          <p class="service-description"></p>
+          <div class="meta-row">
+            <span class="badge service-status"></span>
+          </div>
+          <div class="card-actions"></div>
+        </div>
+      </article>
+    </template>
+
+    <script src="api.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
