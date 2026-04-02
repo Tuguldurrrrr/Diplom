@@ -1,60 +1,60 @@
-# DroneHub – Бүрэн ажиллах Node.js + Express + MySQL вэб систем
+# DroneHub – Node.js + Express + MySQL (XAMPP)
 
-## 📁 Project structure
+## ✅ Цэвэр бүтэц (merge conflict-гүй)
 
 ```
-Diplom/
-├─ server.js
-├─ package.json
-├─ .env.example
-├─ src/
-│  ├─ config/db.js
-│  ├─ middlewares/auth.js
-│  ├─ models/
-│  │  ├─ userModel.js
-│  │  ├─ serviceModel.js
-│  │  ├─ bookingModel.js
-│  │  └─ fileModel.js
-│  ├─ controllers/
-│  │  ├─ authController.js
-│  │  ├─ serviceController.js
-│  │  ├─ bookingController.js
-│  │  ├─ uploadController.js
-│  │  └─ reportController.js
-│  └─ routes/
-│     ├─ authRoutes.js
-│     ├─ serviceRoutes.js
-│     ├─ bookingRoutes.js
-│     ├─ uploadRoutes.js
-│     └─ reportRoutes.js
-├─ public/
-│  ├─ index.html
-│  ├─ login.html
-│  ├─ register.html
-│  ├─ dashboard.html
-│  ├─ booking.html
-│  ├─ admin.html
-│  ├─ operator.html
-│  ├─ css/style.css
-│  └─ js/app.js
-├─ sql/dronehub_schema.sql
-└─ uploads/
+server.js
+package.json
+.env.example
+scripts/check-conflicts.js
+src/
+  config/
+  controllers/
+  middlewares/
+  models/
+  routes/
+public/
+  index.html
+  login.html
+  register.html
+  dashboard.html
+  booking.html
+  admin.html
+  operator.html
+  css/style.css
+  js/app.js
+sql/dronehub_schema.sql
+uploads/
 ```
 
-## ⚙️ Ажиллуулах алхам (XAMPP + MySQL)
+## Ажиллуулах
 
-1. XAMPP дээр Apache, MySQL асаана.
-2. `sql/dronehub_schema.sql` файлыг phpMyAdmin-аар импортлоно.
-3. `.env.example`-г `.env` болгож хуулна.
-4. Терминал дээр:
+1. XAMPP дээр Apache + MySQL асаана.
+2. `sql/dronehub_schema.sql` import хийнэ.
+3. `.env.example` → `.env` болгоно.
+4. Дараа нь:
    - `npm install`
+   - `npm run check:conflicts`
    - `npm run dev`
-5. Хөтөч дээр `http://localhost:3000/login.html` нээнэ.
+5. `http://localhost:3000/login.html` нээнэ.
 
-## 🔐 Security
-- Password: bcrypt hash
-- Auth: JWT
-- SQL: mysql2 prepared query (`db.execute(...)`)
+## Merge conflict-оос сэргийлэх
 
-## 📊 Тайлан API
+- PR merge хийхийн өмнө заавал `npm run check:conflicts` ажиллуул.
+- Хэрэв conflict marker (`<<<<<<<`, `=======`, `>>>>>>>`) илэрвэл тухайн файлыг цэвэрлээд дахин commit хий.
+- Хамгийн түгээмэл асуудал гардаг файлууд: `README.md`, `sql/dronehub_schema.sql`.
+
+## Security
+- bcrypt password hash
+- JWT auth + role authorization
+- mysql2 prepared query (`db.execute`)
+
+## Гол API
+- `POST /api/auth/register`
+- `POST /api/auth/login`
+- `GET /api/services`
+- `POST /api/bookings`
+- `GET /api/bookings`
+- `PATCH /api/bookings/:id/status`
+- `POST /api/upload`
 - `GET /api/reports/monthly`
