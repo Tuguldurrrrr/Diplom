@@ -1,0 +1,10 @@
+body{font-family:Arial,sans-serif;background:#f4f7fb;margin:0;color:#1f2937}
+.top{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:#fff;border-bottom:1px solid #e5e7eb}
+.container{max-width:920px;margin:20px auto;display:grid;gap:14px;padding:0 12px}
+.card{background:#fff;border-radius:10px;padding:14px;box-shadow:0 4px 14px rgba(0,0,0,.06)}
+.auth{max-width:420px;margin:60px auto;background:#fff;padding:16px;border-radius:10px;box-shadow:0 4px 14px rgba(0,0,0,.06)}
+form{display:grid;gap:10px}
+input,select,textarea,button{padding:10px;border-radius:8px;border:1px solid #d1d5db}
+button{background:#2458d3;color:#fff;font-weight:700;cursor:pointer}
+a{text-decoration:none;color:#2458d3}
+.badge{padding:3px 8px;border-radius:999px;font-size:12px}
