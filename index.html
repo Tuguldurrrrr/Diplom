@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="mn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drone Marketplace Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWix+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkR4j8R8iN7R6D6SmQypO1b7YQf2qR6f6QGA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="auth-shell" id="authShell">
+      <section class="auth-panel glass">
+        <h1><i class="fa-solid fa-helicopter"></i> Drone Marketplace</h1>
+        <p class="auth-subtitle">Дроны зураг авалтын үйлчилгээний нэгдсэн платформ</p>
+
+        <div class="auth-tabs">
+          <button class="tab-btn active" data-tab="login">Нэвтрэх</button>
+          <button class="tab-btn" data-tab="register">Бүртгүүлэх</button>
+        </div>
+
+        <form id="loginForm" class="auth-form active">
+          <label>
+            И-мэйл
+            <input type="email" placeholder="name@example.com" required />
+          </label>
+          <label>
+            Нууц үг
+            <input type="password" placeholder="••••••••" required />
+          </label>
+          <label>
+            Нэвтрэх role
+            <select id="roleSelector" required>
+              <option value="customer">Хэрэглэгч (Customer)</option>
+              <option value="operator">Оператор (Service Provider)</option>
+              <option value="manager">Контент хянагч (Content Manager)</option>
+              <option value="admin">Админ (Admin)</option>
+            </select>
+          </label>
+          <button class="primary-btn" type="submit">Нэвтрэх</button>
+        </form>
+
+        <form id="registerForm" class="auth-form">
+          <label>
+            Нэр
+            <input type="text" placeholder="Таны нэр" required />
+          </label>
+          <label>
+            И-мэйл
+            <input type="email" placeholder="name@example.com" required />
+          </label>
+          <label>
+            Нууц үг
+            <input type="password" placeholder="Хамгийн багадаа 8 тэмдэгт" required />
+          </label>
+          <button class="primary-btn" type="submit">Бүртгүүлэх</button>
+        </form>
+      </section>
+    </div>
+
+    <main class="app-shell hidden" id="appShell">
+      <aside class="sidebar" id="sidebar">
+        <div class="brand">
+          <i class="fa-solid fa-helicopter"></i>
+          <div>
+            <h2>DroneHub</h2>
+            <span id="roleBadge">Customer</span>
+          </div>
+        </div>
+
+        <nav id="menuList" class="menu-list"></nav>
+
+        <div class="sidebar-footer">
+          <button id="logoutBtn" class="ghost-btn">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            Гарах
+          </button>
+        </div>
+      </aside>
+
+      <section class="content-wrap">
+        <header class="topbar glass">
+          <button id="mobileMenuBtn" class="icon-btn" aria-label="menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div>
+            <h3 id="pageTitle">Dashboard</h3>
+            <p id="pageSubtitle">Өгөгдөл шинэчлэгдсэн</p>
+          </div>
+          <div class="profile-chip">
+            <i class="fa-solid fa-circle-user"></i>
+            <span id="profileName">B. User</span>
+          </div>
+        </header>
+
+        <section id="view" class="view"></section>
+      </section>
+    </main>
+
+    <template id="serviceCardTemplate">
+      <article class="card service-card fade-in-up">
+        <img src="" alt="service" />
+        <div class="card-body">
+          <div class="card-topline">
+            <h4 class="service-title"></h4>
+            <span class="price"></span>
+          </div>
+          <p class="service-location"></p>
+          <p class="service-description"></p>
+          <div class="card-actions"></div>
+        </div>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
