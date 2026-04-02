@@ -1,6 +1,13 @@
 CREATE DATABASE IF NOT EXISTS dronehub_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE dronehub_db;
 
+SET FOREIGN_KEY_CHECKS = 0;
+DROP TABLE IF EXISTS booking_files;
+DROP TABLE IF EXISTS bookings;
+DROP TABLE IF EXISTS services;
+DROP TABLE IF EXISTS users;
+SET FOREIGN_KEY_CHECKS = 1;
+
 CREATE TABLE users (
   id INT AUTO_INCREMENT PRIMARY KEY,
   full_name VARCHAR(120) NOT NULL,
@@ -19,7 +26,7 @@ CREATE TABLE services (
   status ENUM('Pending','Approved','Rejected') DEFAULT 'Pending',
   created_by INT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (created_by) REFERENCES users(id)
+  CONSTRAINT fk_services_created_by FOREIGN KEY (created_by) REFERENCES users(id)
 );
 
 CREATE TABLE bookings (
@@ -34,9 +41,9 @@ CREATE TABLE bookings (
   status ENUM('Pending','Confirmed','Assigned','In Progress','Completed','Rejected') DEFAULT 'Pending',
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  FOREIGN KEY (customer_id) REFERENCES users(id),
-  FOREIGN KEY (service_id) REFERENCES services(id),
-  FOREIGN KEY (operator_id) REFERENCES users(id)
+  CONSTRAINT fk_bookings_customer FOREIGN KEY (customer_id) REFERENCES users(id),
+  CONSTRAINT fk_bookings_service FOREIGN KEY (service_id) REFERENCES services(id),
+  CONSTRAINT fk_bookings_operator FOREIGN KEY (operator_id) REFERENCES users(id)
 );
 
 CREATE TABLE booking_files (
@@ -46,9 +53,6 @@ CREATE TABLE booking_files (
   file_path VARCHAR(255) NOT NULL,
   uploaded_by INT NOT NULL,
   uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (booking_id) REFERENCES bookings(id),
-  FOREIGN KEY (uploaded_by) REFERENCES users(id)
+  CONSTRAINT fk_booking_files_booking FOREIGN KEY (booking_id) REFERENCES bookings(id),
+  CONSTRAINT fk_booking_files_user FOREIGN KEY (uploaded_by) REFERENCES users(id)
 );
-
--- Тайлангийн жишээ query
--- SELECT DATE_FORMAT(created_at, '%Y-%m') AS month, COUNT(*) AS total_bookings FROM bookings GROUP BY DATE_FORMAT(created_at, '%Y-%m');

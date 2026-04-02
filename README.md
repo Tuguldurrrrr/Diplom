@@ -1,55 +1,21 @@
-# DroneHub – Node.js + Express + MySQL (XAMPP)
+# DroneHub
 
-## ✅ Цэвэр бүтэц (merge conflict-гүй)
+Дроны зураг авалтын захиалга, удирдлагын вэб систем.
 
-```
-server.js
-package.json
-.env.example
-scripts/check-conflicts.js
-src/
-  config/
-  controllers/
-  middlewares/
-  models/
-  routes/
-public/
-  index.html
-  login.html
-  register.html
-  dashboard.html
-  booking.html
-  admin.html
-  operator.html
-  css/style.css
-  js/app.js
-sql/dronehub_schema.sql
-uploads/
-```
+## Stack
+- Node.js + Express
+- MySQL (XAMPP)
+- HTML/CSS/JS
 
-## Ажиллуулах
+## Run
+1. `cp .env.example .env`
+2. XAMPP MySQL асааж `sql/dronehub_schema.sql` импортло
+3. `npm install`
+4. `npm run check:conflicts`
+5. `npm run dev`
+6. `http://localhost:3000/login.html`
 
-1. XAMPP дээр Apache + MySQL асаана.
-2. `sql/dronehub_schema.sql` import хийнэ.
-3. `.env.example` → `.env` болгоно.
-4. Дараа нь:
-   - `npm install`
-   - `npm run check:conflicts`
-   - `npm run dev`
-5. `http://localhost:3000/login.html` нээнэ.
-
-## Merge conflict-оос сэргийлэх
-
-- PR merge хийхийн өмнө заавал `npm run check:conflicts` ажиллуул.
-- Хэрэв conflict marker (`<<<<<<<`, `=======`, `>>>>>>>`) илэрвэл тухайн файлыг цэвэрлээд дахин commit хий.
-- Хамгийн түгээмэл асуудал гардаг файлууд: `README.md`, `sql/dronehub_schema.sql`.
-
-## Security
-- bcrypt password hash
-- JWT auth + role authorization
-- mysql2 prepared query (`db.execute`)
-
-## Гол API
+## API
 - `POST /api/auth/register`
 - `POST /api/auth/login`
 - `GET /api/services`
@@ -58,3 +24,14 @@ uploads/
 - `PATCH /api/bookings/:id/status`
 - `POST /api/upload`
 - `GET /api/reports/monthly`
+
+## Conflict fix
+Хэрэв GitHub PR дээр conflict гарвал локал дээрээ:
+```bash
+git fetch origin
+git checkout <your-branch>
+git merge origin/main
+# README.md, sql/dronehub_schema.sql файлуудаа засаад
+git add README.md sql/dronehub_schema.sql
+git commit
+```
