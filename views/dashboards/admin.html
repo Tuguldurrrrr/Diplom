@@ -1,0 +1,25 @@
+<section class="page-header">
+  <h1>Админ самбар</h1>
+</section>
+
+<section class="cards">
+  <article class="card"><h3>Нийт хэрэглэгч</h3><p><%= summary.total_users %></p></article>
+  <article class="card"><h3>Батлагдсан үйлчилгээ</h3><p><%= summary.approved_services %></p></article>
+  <article class="card"><h3>Нийт захиалга</h3><p><%= summary.total_orders %></p></article>
+</section>
+
+<p><a class="btn btn-sm" href="/reports">Тайлан харах</a></p>
+
+<section class="card">
+  <h2>Хэрэглэгчийн жагсаалт</h2>
+  <table class="table">
+    <tr><th>Нэр</th><th>Email</th><th>Role</th></tr>
+    <% users.forEach(u=>{ %>
+      <tr>
+        <td><%= u.full_name %></td>
+        <td><%= u.email %></td>
+        <td><%= u.role %></td>
+      </tr>
+    <% }) %>
+  </table>
+</section>

@@ -1,0 +1,22 @@
+<section class="auth-shell">
+  <article class="card auth-card">
+    <h1>Бүртгүүлэх</h1>
+    <p>Хэрэглэгч эсвэл оператороор бүртгүүлж marketplace ашиглана.</p>
+    <form method="POST" action="/auth/register" class="form">
+      <label>Овог нэр</label>
+      <input name="full_name" placeholder="Овог нэр" required />
+      <label>Имэйл</label>
+      <input name="email" type="email" placeholder="name@example.com" required />
+      <label>Утас</label>
+      <input name="phone" placeholder="Утасны дугаар" />
+      <label>Роль</label>
+      <select name="role">
+        <option value="customer">Хэрэглэгч</option>
+        <option value="operator">Оператор</option>
+      </select>
+      <label>Нууц үг</label>
+      <input name="password" type="password" placeholder="Нууц үг" required />
+      <button type="submit">Бүртгүүлэх</button>
+    </form>
+  </article>
+</section>

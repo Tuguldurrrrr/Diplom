@@ -1,0 +1,19 @@
+<section class="card">
+  <h1>Үйлчилгээ засах</h1>
+  <form method="POST" action="/services/operator/<%= service.id %>/edit?_method=PUT" class="form">
+    <label>Гарчиг</label>
+    <input name="title" value="<%= service.title %>" required />
+    <label>Тайлбар</label>
+    <textarea name="description"><%= service.description %></textarea>
+    <label>Үнэ (₮)</label>
+    <input name="price" type="number" value="<%= service.price %>" required />
+    <label>Байршил</label>
+    <input name="location" value="<%= service.location %>" required />
+    <label>Ангилал</label>
+    <select name="category_id"><% categories.forEach(c=>{ %><option value="<%= c.id %>" <%= c.id===service.category_id?'selected':'' %>><%= c.name %></option><% }) %></select>
+    <button type="submit">Хадгалах</button>
+  </form>
+  <form method="POST" action="/services/operator/<%= service.id %>/delete?_method=DELETE">
+    <button type="submit" class="btn-danger">Устгах</button>
+  </form>
+</section>

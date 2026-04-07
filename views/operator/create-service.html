@@ -1,0 +1,16 @@
+<section class="card">
+  <h1>Шинэ үйлчилгээ үүсгэх</h1>
+  <form method="POST" action="/services/operator/create/new" class="form">
+    <label>Гарчиг</label>
+    <input name="title" placeholder="Үйлчилгээний гарчиг" required />
+    <label>Тайлбар</label>
+    <textarea name="description" placeholder="Үйлчилгээний дэлгэрэнгүй тайлбар"></textarea>
+    <label>Үнэ (₮)</label>
+    <input name="price" type="number" placeholder="Үнэ" required />
+    <label>Байршил</label>
+    <input name="location" placeholder="Байршил" required />
+    <label>Ангилал</label>
+    <select name="category_id"><% categories.forEach(c=>{ %><option value="<%= c.id %>"><%= c.name %></option><% }) %></select>
+    <button type="submit">Үүсгэх</button>
+  </form>
+</section>
