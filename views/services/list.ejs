@@ -1,0 +1,3 @@
+<h1>Үйлчилгээний жагсаалт</h1>
+<form><input name="search" value="<%= search %>" placeholder="Хайх" /><button>Хайх</button></form>
+<div class="cards"><% services.forEach(s=>{ %><div class="card"><h3><a href="/services/<%= s.id %>"><%= s.title %></a></h3><p><%= s.location %> | ₮<%= s.price %></p></div><% }) %></div>

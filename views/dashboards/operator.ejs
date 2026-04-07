@@ -1,0 +1,6 @@
+<h1>Operator Dashboard</h1>
+<a href="/services/operator/create/new">Create service</a>
+<h2>Миний үйлчилгээ</h2><ul><% services.forEach(s=> { %><li><%= s.title %> (<%= s.status %>) <a href="/services/operator/<%= s.id %>/edit">Edit</a></li><% }) %></ul>
+<h2>Миний захиалгууд</h2><ul><% orders.forEach(o=> { %><li>#<%= o.id %> - <%= o.status %>
+<form method="POST" action="/orders/<%= o.id %>/status"><select name="status"><option>accepted</option><option>in_progress</option><option>completed</option><option>cancelled</option><option>rejected</option></select><button>Шинэчлэх</button></form>
+<a href="/orders/<%= o.id %>/upload">Upload</a></li><% }) %></ul>

@@ -1,0 +1,9 @@
+<h1>Create Service</h1>
+<form method="POST" action="/services/operator/create/new" class="form">
+<input name="title" placeholder="Гарчиг" required />
+<textarea name="description" placeholder="Тайлбар"></textarea>
+<input name="price" type="number" placeholder="Үнэ" required />
+<input name="location" placeholder="Байршил" required />
+<select name="category_id"><% categories.forEach(c=>{ %><option value="<%= c.id %>"><%= c.name %></option><% }) %></select>
+<button>Үүсгэх</button>
+</form>
