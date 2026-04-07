@@ -1,20 +1,5 @@
-<section class="page-header">
-  <h1>Контент менежер самбар</h1>
-  <p>Хүлээгдэж буй үйлчилгээний зарууд.</p>
-</section>
-
-<section class="card">
-  <ul class="list">
-    <% services.forEach(s=> { %>
-      <li>
-        <strong><%= s.title %></strong> — <%= s.operator_name %>
-        <form class="inline-form" method="POST" action="/services/<%= s.id %>/approve">
-          <button type="submit">Батлах</button>
-        </form>
-        <form class="inline-form" method="POST" action="/services/<%= s.id %>/reject">
-          <button type="submit" class="btn-danger">Татгалзах</button>
-        </form>
-      </li>
-    <% }) %>
-  </ul>
-</section>
+<h1>Content Manager Dashboard</h1>
+<ul><% services.forEach(s=> { %><li><%= s.title %> - <%= s.operator_name %>
+<form method="POST" action="/services/<%= s.id %>/approve" style="display:inline"><button>Approve</button></form>
+<form method="POST" action="/services/<%= s.id %>/reject" style="display:inline"><button>Reject</button></form>
+</li><% }) %></ul>

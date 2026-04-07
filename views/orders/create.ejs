@@ -1,13 +1,7 @@
-<section class="card">
-  <h1>Захиалга үүсгэх</h1>
-  <p><strong>Үйлчилгээ:</strong> <%= service.title %></p>
-  <form method="POST" action="/orders/create/<%= service.id %>" class="form">
-    <label>Ажлын өдөр</label>
-    <input type="date" name="shoot_date" required />
-    <label>Байршил</label>
-    <input name="location" placeholder="Зураг авах байршил" required />
-    <label>Нэмэлт тайлбар</label>
-    <textarea name="description" placeholder="Төслийн онцлог, шаардлага..."></textarea>
-    <button type="submit">Захиалга илгээх</button>
-  </form>
-</section>
+<h1>Захиалга үүсгэх - <%= service.title %></h1>
+<form method="POST" action="/orders/create/<%= service.id %>" class="form">
+<input type="date" name="shoot_date" required />
+<input name="location" placeholder="Зураг авах байршил" required />
+<textarea name="description" placeholder="Нэмэлт тайлбар"></textarea>
+<button>Илгээх</button>
+</form>

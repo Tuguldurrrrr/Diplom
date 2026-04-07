@@ -1,11 +1,2 @@
-<article class="card">
-  <h1><%= service.title %></h1>
-  <p><%= service.description %></p>
-  <p><strong>Үнэ:</strong> ₮<%= service.price %></p>
-  <p><strong>Байршил:</strong> <%= service.location %></p>
-  <p><strong>Оператор:</strong> <%= service.operator_name %></p>
-
-  <% if (currentUser && currentUser.role==='customer') { %>
-    <a class="btn" href="/orders/create/<%= service.id %>">Захиалга үүсгэх</a>
-  <% } %>
-</article>
+<h1><%= service.title %></h1><p><%= service.description %></p><p>Үнэ: ₮<%= service.price %></p><p>Оператор: <%= service.operator_name %></p>
+<% if (currentUser && currentUser.role==='customer') { %><a class="btn" href="/orders/create/<%= service.id %>">Захиалга үүсгэх</a><% } %>

@@ -1,20 +1,3 @@
-<section class="page-header">
-  <h1>Үйлчилгээний жагсаалт</h1>
-  <p>Батлагдсан операторын зарууд.</p>
-</section>
-
-<form class="search-bar" method="GET" action="/services">
-  <input name="search" value="<%= search %>" placeholder="Гарчиг, байршлаар хайх..." />
-  <button type="submit">Хайх</button>
-</form>
-
-<section class="cards">
-  <% services.forEach(s=>{ %>
-    <article class="card">
-      <h3><a href="/services/<%= s.id %>"><%= s.title %></a></h3>
-      <p><strong>Байршил:</strong> <%= s.location %></p>
-      <p><strong>Үнэ:</strong> ₮<%= s.price %></p>
-      <a class="btn btn-sm" href="/services/<%= s.id %>">Дэлгэрэнгүй</a>
-    </article>
-  <% }) %>
-</section>
+<h1>Үйлчилгээний жагсаалт</h1>
+<form><input name="search" value="<%= search %>" placeholder="Хайх" /><button>Хайх</button></form>
+<div class="cards"><% services.forEach(s=>{ %><div class="card"><h3><a href="/services/<%= s.id %>"><%= s.title %></a></h3><p><%= s.location %> | ₮<%= s.price %></p></div><% }) %></div>

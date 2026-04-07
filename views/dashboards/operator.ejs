@@ -1,38 +1,6 @@
-<section class="page-header">
-  <h1>Операторын самбар</h1>
-  <a class="btn btn-sm" href="/services/operator/create/new">Шинэ үйлчилгээ үүсгэх</a>
-</section>
-
-<section class="card">
-  <h2>Миний үйлчилгээ</h2>
-  <ul class="list">
-    <% services.forEach(s=> { %>
-      <li>
-        <strong><%= s.title %></strong> — <%= s.status %>
-        <a class="btn btn-sm" href="/services/operator/<%= s.id %>/edit">Засах</a>
-      </li>
-    <% }) %>
-  </ul>
-</section>
-
-<section class="card">
-  <h2>Миний захиалгууд</h2>
-  <ul class="list">
-    <% orders.forEach(o=> { %>
-      <li>
-        <p><strong>#<%= o.id %></strong> — төлөв: <%= o.status %></p>
-        <form class="inline-form" method="POST" action="/orders/<%= o.id %>/status">
-          <select name="status">
-            <option>accepted</option>
-            <option>in_progress</option>
-            <option>completed</option>
-            <option>cancelled</option>
-            <option>rejected</option>
-          </select>
-          <button type="submit">Шинэчлэх</button>
-        </form>
-        <a class="btn btn-sm" href="/orders/<%= o.id %>/upload">Файл удирдах</a>
-      </li>
-    <% }) %>
-  </ul>
-</section>
+<h1>Operator Dashboard</h1>
+<a href="/services/operator/create/new">Create service</a>
+<h2>Миний үйлчилгээ</h2><ul><% services.forEach(s=> { %><li><%= s.title %> (<%= s.status %>) <a href="/services/operator/<%= s.id %>/edit">Edit</a></li><% }) %></ul>
+<h2>Миний захиалгууд</h2><ul><% orders.forEach(o=> { %><li>#<%= o.id %> - <%= o.status %>
+<form method="POST" action="/orders/<%= o.id %>/status"><select name="status"><option>accepted</option><option>in_progress</option><option>completed</option><option>cancelled</option><option>rejected</option></select><button>Шинэчлэх</button></form>
+<a href="/orders/<%= o.id %>/upload">Upload</a></li><% }) %></ul>
