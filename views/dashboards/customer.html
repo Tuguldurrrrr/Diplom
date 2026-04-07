@@ -1,0 +1,17 @@
+<section class="page-header">
+  <h1>Хэрэглэгчийн самбар</h1>
+  <a class="btn btn-sm" href="/services">Үйлчилгээ хайх</a>
+</section>
+
+<section class="card">
+  <h2>Миний захиалгууд</h2>
+  <ul class="list">
+    <% orders.forEach(o=> { %>
+      <li>
+        #<%= o.id %> — <%= o.status %> —
+        <a href="/orders/<%= o.id %>/upload">Файлууд харах</a>
+      </li>
+    <% }) %>
+  </ul>
+  <p><a href="/orders/history">Бүх захиалгын түүх</a></p>
+</section>

@@ -1,0 +1,39 @@
+<section class="hero">
+  <div>
+    <p class="eyebrow">Drone зураг авалтын платформ</p>
+    <h1>Мэргэжлийн оператороо сонгоод 3 алхмаар захиална</h1>
+    <p>Үл хөдлөх, эвент, аялал жуулчлал, газрын зураглал зэрэг бүх төрлийн зураг авалтын үйлчилгээг нэг дороос.</p>
+    <a class="btn" href="/services">Үйлчилгээ үзэх</a>
+  </div>
+</section>
+
+<section>
+  <h2>Үйлчилгээний ангиллууд</h2>
+  <div class="cards">
+    <div class="card"><h3>Үл хөдлөх</h3><p>Орон сууц, оффис, барилга байгууламж.</p></div>
+    <div class="card"><h3>Эвент</h3><p>Хурим, баяр, байгууллагын арга хэмжээ.</p></div>
+    <div class="card"><h3>Судалгаа</h3><p>Хяналт, газрын зураглал, техникийн үзлэг.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Онцлох үйлчилгээ</h2>
+  <div class="cards">
+    <% services.forEach(s=> { %>
+      <article class="card">
+        <h3><a href="/services/<%= s.id %>"><%= s.title %></a></h3>
+        <p><strong>Оператор:</strong> <%= s.operator_name %></p>
+        <p><strong>Үнэ:</strong> ₮<%= s.price %></p>
+      </article>
+    <% }) %>
+  </div>
+</section>
+
+<section>
+  <h2>Хэрхэн ажилладаг вэ?</h2>
+  <ol class="steps">
+    <li>Батлагдсан үйлчилгээ сонгоно.</li>
+    <li>Захиалга үүсгээд огноо, байршлаа оруулна.</li>
+    <li>Оператор ажлаа дуусгаад зураг/видеогоо байршуулна.</li>
+  </ol>
+</section>
