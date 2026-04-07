@@ -4,7 +4,6 @@ const session = require('express-session');
 const methodOverride = require('method-override');
 const expressLayouts = require('express-ejs-layouts');
 const dotenv = require('dotenv');
-const ejs = require('ejs');
 
 const pageRoutes = require('./routes/pageRoutes');
 const authRoutes = require('./routes/authRoutes');
@@ -19,8 +18,7 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.engine('html', ejs.renderFile);
-app.set('view engine', 'html');
+app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(expressLayouts);
 app.set('layout', 'layouts/main');

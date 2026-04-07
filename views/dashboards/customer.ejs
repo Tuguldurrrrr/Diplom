@@ -1,0 +1,2 @@
+<h1>Customer Dashboard</h1><a href="/orders/history">Захиалгын түүх</a>
+<ul><% orders.forEach(o=> { %><li>#<%= o.id %> - <%= o.status %> - <a href="/orders/<%= o.id %>/upload">Файлууд</a></li><% }) %></ul>

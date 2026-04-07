@@ -8,9 +8,9 @@ const requiredFiles = [
   'routes/authRoutes.js',
   'routes/serviceRoutes.js',
   'routes/orderRoutes.js',
-  'views/home/index.html',
-  'views/services/list.html',
-  'views/orders/create.html',
+  'views/home/index.ejs',
+  'views/services/list.ejs',
+  'views/orders/create.ejs',
   'public/css/style.css',
   'sql/schema.sql'
 ];

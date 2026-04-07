@@ -1,0 +1,5 @@
+<h1>File upload (Order #<%= order.id %>)</h1>
+<% if (currentUser.role==='operator') { %>
+<form method="POST" action="/orders/<%= order.id %>/upload" enctype="multipart/form-data" class="form"><input type="file" name="file" required /><button>Upload</button></form>
+<% } %>
+<ul><% files.forEach(f=>{ %><li><a href="<%= f.file_path %>" download><%= f.file_name %></a></li><% }) %></ul>

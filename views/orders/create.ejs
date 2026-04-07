@@ -1,0 +1,7 @@
+<h1>Захиалга үүсгэх - <%= service.title %></h1>
+<form method="POST" action="/orders/create/<%= service.id %>" class="form">
+<input type="date" name="shoot_date" required />
+<input name="location" placeholder="Зураг авах байршил" required />
+<textarea name="description" placeholder="Нэмэлт тайлбар"></textarea>
+<button>Илгээх</button>
+</form>

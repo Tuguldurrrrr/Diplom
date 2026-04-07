@@ -1,0 +1,5 @@
+<h1>Content Manager Dashboard</h1>
+<ul><% services.forEach(s=> { %><li><%= s.title %> - <%= s.operator_name %>
+<form method="POST" action="/services/<%= s.id %>/approve" style="display:inline"><button>Approve</button></form>
+<form method="POST" action="/services/<%= s.id %>/reject" style="display:inline"><button>Reject</button></form>
+</li><% }) %></ul>

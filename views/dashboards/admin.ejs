@@ -1,0 +1,4 @@
+<h1>Admin Dashboard</h1>
+<p>Нийт хэрэглэгч: <%= summary.total_users %> | Батлагдсан үйлчилгээ: <%= summary.approved_services %> | Нийт захиалга: <%= summary.total_orders %></p>
+<a href="/reports">Reports page</a>
+<table><tr><th>Нэр</th><th>Email</th><th>Role</th></tr><% users.forEach(u=>{ %><tr><td><%= u.full_name %></td><td><%= u.email %></td><td><%= u.role %></td></tr><% }) %></table>

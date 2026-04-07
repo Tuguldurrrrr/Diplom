@@ -45,11 +45,6 @@ npm run seed
 npm run dev
 ```
 
-## 7) Basic test
-```bash
-npm test
-```
-
 ## MVP features
 - Session auth + bcrypt
 - Role-based dashboards (admin/content_manager/operator/customer)
@@ -58,7 +53,6 @@ npm test
 - File upload/download
 - Reports page (basic)
 - Simplified page routing/controller (fewer files, easier maintenance)
-- HTML template views (`views/**/*.html`) rendered by EJS engine
 
 ## Next improvements
 - Payment integration
