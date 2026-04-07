@@ -1,0 +1,10 @@
+<h1>Edit Service</h1>
+<form method="POST" action="/services/operator/<%= service.id %>/edit?_method=PUT" class="form">
+<input name="title" value="<%= service.title %>" required />
+<textarea name="description"><%= service.description %></textarea>
+<input name="price" type="number" value="<%= service.price %>" required />
+<input name="location" value="<%= service.location %>" required />
+<select name="category_id"><% categories.forEach(c=>{ %><option value="<%= c.id %>" <%= c.id===service.category_id?'selected':'' %>><%= c.name %></option><% }) %></select>
+<button>Хадгалах</button>
+</form>
+<form method="POST" action="/services/operator/<%= service.id %>/delete?_method=DELETE"><button>Устгах</button></form>

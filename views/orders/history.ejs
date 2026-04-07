@@ -1,0 +1,11 @@
+<section class="page-header">
+  <h1>Захиалгын түүх</h1>
+</section>
+
+<section class="card">
+  <ul class="list">
+    <% orders.forEach(o=>{ %>
+      <li>#<%= o.id %> — <%= o.title %> — <strong><%= o.status %></strong></li>
+    <% }) %>
+  </ul>
+</section>
